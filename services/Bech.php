@@ -1,8 +1,8 @@
 <?php
 
-namespace plugins\sms\services;
+namespace miaoxing\sms\services;
 
-use plugins\sms\BaseSms;
+use miaoxing\sms\BaseSms;
 
 /**
  * 来信码短信服务

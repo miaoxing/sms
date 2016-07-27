@@ -1,6 +1,6 @@
 <?php
 
-namespace plugins\sms\tests\services;
+namespace miaoxing\sms\tests\services;
 
 use miaoxing\plugin\tests\BaseTestCase;
 
@@ -69,7 +69,7 @@ class UcpaasTest extends BaseTestCase
         ]);
         $ret = wei()->ucpaas->setUcpaas($ucpaas);
 
-        $this->assertInstanceOf('\plugins\sms\services\Ucpaas', $ret);
+        $this->assertInstanceOf('\miaoxing\sms\services\Ucpaas', $ret);
     }
 
     public function testSetGetUcpaas()

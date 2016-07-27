@@ -1,6 +1,6 @@
 <?php
 
-namespace plugins\sms\services;
+namespace miaoxing\sms\services;
 
 /**
  * @property \services\Logger $logger
@@ -80,7 +80,7 @@ class Sms extends \miaoxing\plugin\BaseService
         // 5. 逐个调用短信服务商的接口
         $errors = [];
         foreach ($this->drivers as $driver) {
-            /** @var \plugins\sms\BaseSms $service */
+            /** @var \miaoxing\sms\BaseSms $service */
             $service = $this->wei->get($driver);
             if (isset($options['tplIds'][$driver])) {
                 $ret = $service->sendTplSms($options['mobile'], $options['tplIds'][$driver], $options['data']);

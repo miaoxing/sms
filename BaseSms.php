@@ -1,6 +1,6 @@
 <?php
 
-namespace plugins\sms;
+namespace miaoxing\sms;
 
 abstract class BaseSms extends \miaoxing\plugin\BaseService
 {

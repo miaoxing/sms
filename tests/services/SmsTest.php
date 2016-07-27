@@ -1,6 +1,6 @@
 <?php
 
-namespace plugins\sms\tests\services;
+namespace miaoxing\sms\tests\services;
 
 use miaoxing\plugin\tests\BaseTestCase;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace plugins\sms\tests\services;
+namespace miaoxing\sms\tests\services;
 
 class LogSmsTest extends \miaoxing\plugin\tests\BaseTestCase
 {

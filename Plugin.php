@@ -1,6 +1,6 @@
 <?php
 
-namespace plugins\sms;
+namespace miaoxing\sms;
 
 class Plugin extends \miaoxing\plugin\BasePlugin
 {
