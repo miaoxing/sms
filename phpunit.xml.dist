@@ -6,8 +6,8 @@
   >
 
   <testsuites>
-    <testsuite name="default">
-      <directory>.</directory>
+    <testsuite name="Default Test Suite">
+      <directory>./tests</directory>
     </testsuite>
   </testsuites>
 
@@ -15,8 +15,9 @@
     <whitelist>
       <directory>.</directory>
       <exclude>
-        <directory>docs</directory>
-        <directory>tests</directory>
+        <directory>./docs</directory>
+        <directory>./tests</directory>
+        <directory>./vendor</directory>
       </exclude>
     </whitelist>
   </filter>
