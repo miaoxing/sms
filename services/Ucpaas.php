@@ -71,7 +71,8 @@ class Ucpaas extends BaseSms
 
         wei()->logger->alert('Ucpaas短信发送失败', [
             'param' => $param,
-            'result' => $result
+            'result' => $result,
+            'response' => $response
         ]);
         return ['code' => -1, 'message' => '发送失败'];
     }
