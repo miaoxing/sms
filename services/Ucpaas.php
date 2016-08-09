@@ -62,10 +62,10 @@ class Ucpaas extends BaseSms
             'token' => $this->accountToken
         ]);
         $response = $ucpaas->templateSMS($this->appId, $mobile, $tplId, implode(',', $data));
-        $result = json_decode($response);
+        $result = json_decode($response, true);
 
         // 2. 处理发送结果
-        if ($result != null && $result->resp->respCode == '000000') {
+        if ($result != null && $result['resp']['respCode'] == '000000') {
             return ['code' => 1, 'message' => '发送成功'];
         }
 
