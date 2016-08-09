@@ -97,7 +97,7 @@ class Sms extends \miaoxing\plugin\BaseService
         }
 
         // 6. 全部发送失败,告警
-        $this->logger->alert('所有短信服务发送失败', $errors);
+        $this->logger->alert('所有短信服务发送失败', ['errors' => $errors]);
         return ['code' => -4, 'message' => '很抱歉,短信服务暂时不可以用,请稍后再试'];
     }
 
