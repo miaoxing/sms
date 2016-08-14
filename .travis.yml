@@ -8,6 +8,12 @@ php:
   - hhvm
   - nightly
 
+matrix:
+  fast_finish: true
+  allow_failures:
+    - php: hhvm
+    - php: nightly
+
 install:
   - composer require satooshi/php-coveralls --no-interaction
 
@@ -16,8 +22,3 @@ script:
 
 after_success:
   - travis_retry php vendor/bin/coveralls -v
-
-matrix:
-  allow_failures:
-    - php: hhvm
-    - php: nightly
