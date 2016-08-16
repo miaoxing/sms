@@ -1,11 +1,10 @@
 {
   "name": "miaoxing/sms",
   "keywords": [
-    "miaoxing"
+    "miaoxing", "sms"
   ],
   "license": "MIT",
   "require": {
-    "wei/wei": "0.9.*",
     "miaoxing/plugin": "dev-master"
   },
   "autoload": {
