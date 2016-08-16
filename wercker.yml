@@ -1,6 +1,8 @@
 box: php
 build:
   steps:
+    - install-packages:
+        packages: git
     - mbrevda/composer-install@1.0.1
     - script:
         name: PHPUnit integration tests
