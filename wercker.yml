@@ -1,9 +1,7 @@
 box: php
 build:
   steps:
-    - script:
-        name: install dependencies
-        code: composer install --no-interaction
+    - mbrevda/composer-install@1.0.1
     - script:
         name: PHPUnit integration tests
         code: phpunit --verbose --stderr
