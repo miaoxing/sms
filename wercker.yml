@@ -5,5 +5,10 @@ build:
         packages: git
     - mbrevda/composer-install@1.0.1
     - script:
+        name: install phpunit
+        code: |-
+          curl -L https://phar.phpunit.de/phpunit.phar -o /usr/local/bin/phpunit
+          chmod +x /usr/local/bin/phpunit
+    - script:
         name: PHPUnit integration tests
         code: phpunit --verbose --stderr
