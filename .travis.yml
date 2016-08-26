@@ -22,3 +22,7 @@ script:
 
 after_success:
   - travis_retry php vendor/bin/coveralls -v
+
+notifications:
+  email:
+    - miaoxingyun@gmail.com
