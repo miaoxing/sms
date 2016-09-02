@@ -30,7 +30,7 @@ class SmsTest extends BaseTestCase
         $mock = $this->getServiceMock('logger', ['alert']);
         $mock->expects($this->once())
             ->method('alert')
-            ->with('所有短信服务发送失败', []);
+            ->with('所有短信服务发送失败', ['errors' => []]);
 
         $ret = wei()->sms->send([
             'mobile' => '13800138000',
