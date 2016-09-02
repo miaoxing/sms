@@ -128,7 +128,7 @@ class Sms extends \miaoxing\plugin\BaseService
      * @param string $id
      * @return int
      */
-    public function getTimeKey($id)
+    protected function getTimeKey($id)
     {
         return sprintf('sms-%s-' . (int)(time() / $this->timeWindow), $id);
     }

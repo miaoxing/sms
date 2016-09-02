@@ -122,23 +122,14 @@ class SmsTest extends BaseTestCase
             'drivers' => ['logSms']
         ]);
 
-        var_dump(get_class(wei()->counter->cache));
-        $mobileKey = wei()->sms->getTimeKey('13800138000');
-        var_dump($mobileKey);
-
         $ret = wei()->sms->send([
             'mobile' => '13800138000'
         ]);
         $this->assertRetSuc($ret);
 
-        var_dump(wei()->cache->get($mobileKey));
-
         $ret = wei()->sms->send([
             'mobile' => '13800138000'
         ]);
-
-        var_dump(wei()->cache->get($mobileKey));
-
         $this->assertRetErr($ret, -2, '很抱歉,您的操作太频繁了,请稍后再试');
     }
 
