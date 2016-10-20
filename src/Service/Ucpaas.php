@@ -1,10 +1,10 @@
 <?php
 
-namespace miaoxing\sms\services;
+namespace Miaoxing\Sms\Service;
 
-use miaoxing\sms\BaseSms;
+use Miaoxing\Sms\BaseSms;
 
-require __DIR__ . '/../libs/Ucpaas.php';
+require __DIR__ . '/../Lib/Ucpaas.php';
 
 /**
  * 云之讯短信服务

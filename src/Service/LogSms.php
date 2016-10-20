@@ -1,8 +1,8 @@
 <?php
 
-namespace miaoxing\sms\services;
+namespace Miaoxing\Sms\Service;
 
-use miaoxing\sms\BaseSms;
+use Miaoxing\Sms\BaseSms;
 
 /**
  * @property \services\Logger $logger

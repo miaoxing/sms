@@ -2,10 +2,10 @@
 
 namespace miaoxing\sms\docs {
     /**
-     * @property    \miaoxing\sms\services\Sms $sms 短信服务
-     * @property    \miaoxing\sms\services\Bech $bech 日志短信服务
-     * @property    \miaoxing\sms\services\LogSms $logSms 来信码短信服务
-     * @property    \miaoxing\sms\services\Ucpaas $ucpaas 云之讯短信服务
+     * @property    \Miaoxing\Sms\Service\Sms $sms 短信服务
+     * @property    \Miaoxing\Sms\Service\Bech $bech 日志短信服务
+     * @property    \Miaoxing\Sms\Service\LogSms $logSms 来信码短信服务
+     * @property    \Miaoxing\Sms\Service\Ucpaas $ucpaas 云之讯短信服务
      */
     class AutoComplete
     {
