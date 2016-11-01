@@ -69,7 +69,7 @@ class UcpaasTest extends BaseTestCase
         ]);
         $ret = wei()->ucpaas->setUcpaas($ucpaas);
 
-        $this->assertInstanceOf('\miaoxing\sms\services\Ucpaas', $ret);
+        $this->assertInstanceOf('\Miaoxing\Sms\Service\Ucpaas', $ret);
     }
 
     public function testSetGetUcpaas()
