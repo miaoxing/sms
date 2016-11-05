@@ -2,7 +2,7 @@
 
 namespace MiaoxingTest\Sms\Service;
 
-use miaoxing\plugin\tests\BaseTestCase;
+use MiaoxingTest\Plugin\BaseTestCase;
 
 class SmsTest extends BaseTestCase
 {
