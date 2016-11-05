@@ -2,7 +2,7 @@
 
 namespace MiaoxingTest\Sms\Service;
 
-class LogSmsTest extends \MiaoxingTest\Plugin\BaseTestCase
+class LogSmsTest extends \Miaoxing\Plugin\Test\BaseTestCase
 {
     public function testSendTplSms()
     {
