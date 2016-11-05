@@ -15,7 +15,7 @@ class BechTest extends BaseTestCase
                 'result' => true,
                 'response' => [
                     'result' => '01',
-                ]
+                ],
             ]));
 
         $ret = wei()->bech->sendContentSms(13800138000, 'test');
@@ -32,7 +32,7 @@ class BechTest extends BaseTestCase
                 'result' => true,
                 'response' => [
                     'result' => '02',
-                ]
+                ],
             ]));
 
         $ret = wei()->bech->sendContentSms(13800138000, 'test');
@@ -46,7 +46,7 @@ class BechTest extends BaseTestCase
         $mock->expects($this->once())
             ->method('__invoke')
             ->willReturn(wei()->newInstance('http', [
-                'result' => false
+                'result' => false,
             ]));
 
         $ret = wei()->bech->sendContentSms(13800138000, 'test');
@@ -58,6 +58,6 @@ class BechTest extends BaseTestCase
     {
         $ret = wei()->bech->sendTplSms(13800138000, 123, []);
 
-        $this->assertRetErr($ret, -1,'不支持模板短信');
+        $this->assertRetErr($ret, -1, '不支持模板短信');
     }
 }

@@ -23,10 +23,10 @@ class UcpaasTest extends BaseTestCase
             ->method('templateSMS')
             ->willReturn(json_encode([
                 'resp' => [
-                    'respCode' => '000000'
-                ]
+                    'respCode' => '000000',
+                ],
             ]));
-        /** @var \Ucpaas $mock */
+        /* @var \Ucpaas $mock */
         wei()->ucpaas->setUcpaas($mock);
 
         $ret = wei()->ucpaas->sendTplSms(13800138000, 1, []);
@@ -44,10 +44,10 @@ class UcpaasTest extends BaseTestCase
             ->method('templateSMS')
             ->willReturn(json_encode([
                 'resp' => [
-                    'respCode' => '000001'
-                ]
+                    'respCode' => '000001',
+                ],
             ]));
-        /** @var \Ucpaas $mock */
+        /* @var \Ucpaas $mock */
         wei()->ucpaas->setUcpaas($mock);
 
         $ret = wei()->ucpaas->sendTplSms(13800138000, 1, []);
