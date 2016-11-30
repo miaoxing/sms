@@ -8,6 +8,8 @@
  * Dec : ucpass php demo
  *
  * @codeCoverageIgnore 忽略官方类库
+ * @codingStandardsIgnoreFile
+ * @SuppressWarnings(PHPMD)
  */
 class Ucpaas
 {
