@@ -57,7 +57,7 @@ class Ucpaas extends BaseSms
         // 1. 调用官方类库发送
         $ucpaas = $this->getUcpaas([
             'accountsid' => $this->accountSid,
-            'token' => $this->accountToken
+            'token' => $this->accountToken,
         ]);
         $response = $ucpaas->templateSMS($this->appId, $mobile, $tplId, implode(',', $data));
         $result = json_decode($response, true);
@@ -70,8 +70,9 @@ class Ucpaas extends BaseSms
         wei()->logger->alert('Ucpaas短信发送失败', [
             'param' => $param,
             'result' => $result,
-            'response' => $response
+            'response' => $response,
         ]);
+
         return ['code' => -1, 'message' => '发送失败'];
     }
 
@@ -86,6 +87,7 @@ class Ucpaas extends BaseSms
         if (!$this->ucpaas) {
             $this->ucpaas = new \Ucpaas($options);
         }
+
         return $this->ucpaas;
     }
 
@@ -98,6 +100,7 @@ class Ucpaas extends BaseSms
     public function setUcpaas(\Ucpaas $ucpaas = null)
     {
         $this->ucpaas = $ucpaas;
+
         return $this;
     }
 }
