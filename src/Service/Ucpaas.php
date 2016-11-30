@@ -4,8 +4,6 @@ namespace Miaoxing\Sms\Service;
 
 use Miaoxing\Sms\BaseSms;
 
-require __DIR__ . '/../Lib/Ucpaas.php';
-
 /**
  * 云之讯短信服务
  *
