@@ -73,7 +73,7 @@ class Sms extends \miaoxing\plugin\BaseService
         $ipKey = $this->getIpKey();
         $times = wei()->counter->incr($ipKey);
         if ($times > $this->maxIpTimes) {
-            wei()->logger->alert('用户发送短信太频繁', $options + ['ip' => $ip]);
+            wei()->logger->alert('用户发送短信太频繁', $options + ['ipKey' => $ipKey]);
             return ['code' => -3, 'message' => '很抱歉,您的操作太频繁了,请稍后再试'];
         }
 

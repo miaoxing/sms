@@ -3,6 +3,7 @@
 namespace Miaoxing\Sms\Service;
 
 use Miaoxing\Sms\BaseSms;
+use Wei\RetTrait;
 
 /**
  * 云之讯短信服务
@@ -11,6 +12,8 @@ use Miaoxing\Sms\BaseSms;
  */
 class Ucpaas extends BaseSms
 {
+    use RetTrait;
+
     /**
      * 开发者账号ID。由32个英文字母和阿拉伯数字组成的开发者账号唯一标识符。
      *
@@ -64,16 +67,15 @@ class Ucpaas extends BaseSms
 
         // 2. 处理发送结果
         if ($result != null && $result['resp']['respCode'] == '000000') {
-            return ['code' => 1, 'message' => '发送成功'];
+            return $this->suc('发送成功');
         }
 
-        wei()->logger->alert('Ucpaas短信发送失败', [
+        return $this->err([
+            'message' => '发送失败',
             'param' => $param,
             'result' => $result,
             'response' => $response,
         ]);
-
-        return ['code' => -1, 'message' => '发送失败'];
     }
 
     /**
