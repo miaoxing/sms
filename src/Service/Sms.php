@@ -53,7 +53,7 @@ class Sms extends \miaoxing\plugin\BaseService
             'mobile' => '',
             'content' => '',
             'tplIds' => [],
-            'data' => []
+            'data' => [],
         ];
 
         // 2. 检查手机号码格式是否正确
@@ -66,6 +66,7 @@ class Sms extends \miaoxing\plugin\BaseService
         $times = wei()->counter->incr($mobileKey);
         if ($times > $this->maxMobileTimes) {
             wei()->logger->alert('手机号码发送短信太频繁', $options);
+
             return ['code' => -2, 'message' => '很抱歉,您的操作太频繁了,请稍后再试'];
         }
 
@@ -74,6 +75,7 @@ class Sms extends \miaoxing\plugin\BaseService
         $times = wei()->counter->incr($ipKey);
         if ($times > $this->maxIpTimes) {
             wei()->logger->alert('用户发送短信太频繁', $options + ['ipKey' => $ipKey]);
+
             return ['code' => -3, 'message' => '很抱歉,您的操作太频繁了,请稍后再试'];
         }
 
@@ -98,6 +100,7 @@ class Sms extends \miaoxing\plugin\BaseService
 
         // 6. 全部发送失败,告警
         $this->logger->alert('所有短信服务发送失败', ['errors' => $errors]);
+
         return ['code' => -4, 'message' => '很抱歉,短信服务暂时不可以用,请稍后再试'];
     }
 
@@ -130,7 +133,7 @@ class Sms extends \miaoxing\plugin\BaseService
      */
     protected function getTimeKey($id)
     {
-        return sprintf('sms-%s-' . (int)(time() / $this->timeWindow), $id);
+        return sprintf('sms-%s-' . (int) (time() / $this->timeWindow), $id);
     }
 
     /**
@@ -143,6 +146,7 @@ class Sms extends \miaoxing\plugin\BaseService
     {
         wei()->counter->remove($this->getMobileKey($mobile));
         wei()->counter->remove($this->getIpKey());
+
         return $this;
     }
 }
