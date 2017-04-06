@@ -5,7 +5,7 @@ namespace Miaoxing\Sms\Service;
 use Miaoxing\Sms\BaseSms;
 
 /**
- * @property \services\Logger $logger
+ * @property \Miaoxing\App\Service\Logger $logger
  */
 class LogSms extends BaseSms
 {
