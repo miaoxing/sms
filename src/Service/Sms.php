@@ -8,7 +8,7 @@ namespace Miaoxing\Sms\Service;
  * @property \Wei\Request $request
  * @method   bool isMobileCn($input) Check if the input is valid Chinese mobile number
  */
-class Sms extends \miaoxing\plugin\BaseService
+class Sms extends \Miaoxing\Plugin\BaseService
 {
     /**
      * 短信提供商

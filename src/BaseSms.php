@@ -2,7 +2,7 @@
 
 namespace Miaoxing\Sms;
 
-abstract class BaseSms extends \miaoxing\plugin\BaseService
+abstract class BaseSms extends \Miaoxing\Plugin\BaseService
 {
     /**
      * 发送内容短信
