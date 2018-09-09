@@ -57,6 +57,9 @@ class Sms extends \Miaoxing\Plugin\BaseService
         ];
 
         // 2. 检查手机号码格式是否正确
+        if (!$options['mobile']) {
+            return ['code' => -5, 'message' => '手机号码不能为空'];
+        }
         if (!$this->isMobileCn($options['mobile'])) {
             return ['code' => -1, 'message' => $this->isMobileCn->getFirstMessage('手机号码')];
         }
