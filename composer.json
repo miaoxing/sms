@@ -3,7 +3,8 @@
   "type": "miaoxing-plugin",
   "description": "Miaoxing SMS Plugin",
   "keywords": [
-    "miaoxing", "sms"
+    "miaoxing",
+    "sms"
   ],
   "license": "MIT",
   "require": {
