@@ -4,7 +4,7 @@ namespace Miaoxing\Sms\Service;
 
 /**
  * @property \Miaoxing\App\Service\Logger $logger
- * @property \Wei\Validator\MobileCn $isMobileCn
+ * @property \Wei\IsMobileCn $isMobileCn
  * @property \Wei\Request $request
  * @method   bool isMobileCn($input) Check if the input is valid Chinese mobile number
  */
