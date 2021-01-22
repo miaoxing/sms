@@ -10,7 +10,7 @@ class UcpaasTest extends BaseTestCase
     {
         $ret = wei()->ucpaas->sendContentSms(13800138000, 'test');
 
-        $this->assertRetErr($ret, -1, '不支持内容短信');
+        $this->assertRetErr($ret, '不支持内容短信', -1);
     }
 
     public function testSendTplSms()
@@ -52,7 +52,7 @@ class UcpaasTest extends BaseTestCase
 
         $ret = wei()->ucpaas->sendTplSms(13800138000, 1, []);
 
-        $this->assertRetErr($ret, -1, '发送失败');
+        $this->assertRetErr($ret, '发送失败', -1);
     }
 
     public function testGetUcpaas()

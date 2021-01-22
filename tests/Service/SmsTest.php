@@ -20,7 +20,7 @@ class SmsTest extends BaseTestCase
             'content' => 'content',
         ]);
 
-        $this->assertRetErr($ret, -1, '手机号码必须是11位长度的数字,以13,14,15,17或18开头');
+        $this->assertRetErr($ret, '手机号码必须是11位长度的数字,以13,14,15,17或18开头', -1);
     }
 
     public function testSendEmptyDriver()
@@ -37,7 +37,7 @@ class SmsTest extends BaseTestCase
             'content' => 'content',
         ]);
 
-        $this->assertRetErr($ret, -4, '很抱歉,短信服务暂时不可以用,请稍后再试');
+        $this->assertRetErr($ret, '很抱歉,短信服务暂时不可以用,请稍后再试', -4);
     }
 
     public function testSendContentByLogSmsDriver()
@@ -110,7 +110,7 @@ class SmsTest extends BaseTestCase
             'content' => 'content',
         ]);
 
-        $this->assertRetErr($ret, -4, '很抱歉,短信服务暂时不可以用,请稍后再试');
+        $this->assertRetErr($ret, '很抱歉,短信服务暂时不可以用,请稍后再试', -4);
 
         unset(wei()->sms->logger);
     }
@@ -130,7 +130,7 @@ class SmsTest extends BaseTestCase
         $ret = wei()->sms->send([
             'mobile' => '13800138000',
         ]);
-        $this->assertRetErr($ret, -2, '很抱歉,您的操作太频繁了,请稍后再试');
+        $this->assertRetErr($ret, '很抱歉,您的操作太频繁了,请稍后再试', -2);
     }
 
     public function testIpTimeLimit()
@@ -150,6 +150,6 @@ class SmsTest extends BaseTestCase
         $ret = wei()->sms->send([
             'mobile' => '13800138001',
         ]);
-        $this->assertRetErr($ret, -3, '很抱歉,您的操作太频繁了,请稍后再试');
+        $this->assertRetErr($ret, '很抱歉,您的操作太频繁了,请稍后再试', -3);
     }
 }
