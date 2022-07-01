@@ -1,3 +1,14 @@
+## [0.1.26](https://github.com/miaoxing/sms/compare/v0.1.25...v0.1.26) (2022-07-01)
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/app:** upgrade from `0.6.4` to `0.6.5`
+* **@miaoxing/dev:** upgrade from `8.1.1` to `8.1.2`
+
 ## [0.1.25](https://github.com/miaoxing/sms/compare/v0.1.24...v0.1.25) (2022-06-01)
 
 
