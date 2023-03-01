@@ -1,3 +1,13 @@
+## [0.1.35](https://github.com/miaoxing/sms/compare/v0.1.34...v0.1.35) (2023-03-01)
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/app:** upgrade from `0.6.13` to `0.7.0`
+
 ## [0.1.34](https://github.com/miaoxing/sms/compare/v0.1.33...v0.1.34) (2023-01-31)
 
 
