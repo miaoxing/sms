@@ -66,7 +66,7 @@ class Ucpaas extends BaseSms
         $result = json_decode($response, true);
 
         // 2. 处理发送结果
-        if ($result != null && $result['resp']['respCode'] == '000000') {
+        if (null != $result && '000000' == $result['resp']['respCode']) {
             return $this->suc('发送成功');
         }
 

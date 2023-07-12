@@ -34,8 +34,8 @@ class Bech extends BaseSms
                 'accesskey' => $this->accessKey,
                 'secretkey' => $this->secretKey,
                 'mobile' => $mobile,
-                'content' => urlencode($content)
-            ]
+                'content' => urlencode($content),
+            ],
         ]);
 
         // 2. 记录日志

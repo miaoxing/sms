@@ -94,7 +94,7 @@ class Sms extends \Miaoxing\Plugin\BaseService
             }
 
             // 只要发送成功,立即返回
-            if ($ret['code'] === 1) {
+            if (1 === $ret['code']) {
                 return $ret;
             } else {
                 $errors[] = $ret;

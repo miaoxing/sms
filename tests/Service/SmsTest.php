@@ -6,7 +6,7 @@ use Miaoxing\Plugin\Test\BaseTestCase;
 
 class SmsTest extends BaseTestCase
 {
-    public function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

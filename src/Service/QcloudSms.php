@@ -32,7 +32,7 @@ class QcloudSms extends BaseSms
         $sender = new SmsSingleSender($this->appId, $this->appKey);
         $result = $sender->sendWithParam('86', $mobile, $tplId, $data, $this->sign);
         $res = json_decode($result, true);
-        if ($res['result'] === 0) {
+        if (0 === $res['result']) {
             return $this->suc($res);
         }
 

@@ -80,6 +80,8 @@ class Ucpaas
     /**
      * @param $url
      * @param string $type
+     * @param mixed $body
+     * @param mixed $method
      * @return mixed|string
      */
     private function getResult($url, $body, $type, $method)
@@ -103,7 +105,7 @@ class Ucpaas
      */
     private function connection($url, $body, $type, $method)
     {
-        if ($type == 'json') {
+        if ('json' == $type) {
             $mine = 'application/json';
         } else {
             $mine = 'application/xml';
@@ -115,14 +117,14 @@ class Ucpaas
                 'Authorization:' . $this->getAuthorization(),
             ];
             $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-            if ($method == 'post') {
-                curl_setopt($ch, CURLOPT_POST, 1);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+            curl_setopt($ch, \CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, \CURLOPT_HTTPHEADER, $header);
+            if ('post' == $method) {
+                curl_setopt($ch, \CURLOPT_POST, 1);
+                curl_setopt($ch, \CURLOPT_POSTFIELDS, $body);
             }
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($ch, \CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, \CURLOPT_SSL_VERIFYHOST, false);
             $result = curl_exec($ch);
             curl_close($ch);
         } else {
@@ -131,13 +133,13 @@ class Ucpaas
             $headers = [
                 'method' => strtoupper($method),
             ];
-            $headers[] = 'Accept:'.$mine;
+            $headers[] = 'Accept:' . $mine;
             $headers['header'] = [];
-            $headers['header'][] = 'Authorization: '.$this->getAuthorization();
-            $headers['header'][] = 'Content-Type:'.$mine.';charset=utf-8';
+            $headers['header'][] = 'Authorization: ' . $this->getAuthorization();
+            $headers['header'][] = 'Content-Type:' . $mine . ';charset=utf-8';
 
             if (!empty($body)) {
-                $headers['header'][] = 'Content-Length:'.strlen($body);
+                $headers['header'][] = 'Content-Length:' . strlen($body);
                 $headers['content'] = $body;
             }
 
@@ -156,9 +158,9 @@ class Ucpaas
      */
     public function getDevinfo($type = 'json')
     {
-        if ($type == 'json') {
+        if ('json' == $type) {
             $type = 'json';
-        } elseif ($type == 'xml') {
+        } elseif ('xml' == $type) {
             $type = 'xml';
         } else {
             throw new Exception('只能json或xml，默认为json');
@@ -175,13 +177,14 @@ class Ucpaas
      * @param $charge 充值的金额
      * @param $friendlyName 昵称
      * @param $mobile 手机号码
+     * @param mixed $type
      * @return json/xml
      * @links http://www.ucpaas.com/page/doc/doc_rest2-2.jsp
      */
     public function applyClient($appId, $clientType, $charge, $friendlyName, $mobile, $type = 'json')
     {
         $url = self::BaseUrl . self::SoftVersion . '/Accounts/' . $this->accountSid . '/Clients?sig=' . $this->getSigParameter();
-        if ($type == 'json') {
+        if ('json' == $type) {
             $body_json = [];
             $body_json['client'] = [];
             $body_json['client']['appId'] = $appId;
@@ -190,13 +193,13 @@ class Ucpaas
             $body_json['client']['friendlyName'] = $friendlyName;
             $body_json['client']['mobile'] = $mobile;
             $body = json_encode($body_json);
-        } elseif ($type == 'xml') {
+        } elseif ('xml' == $type) {
             $body_xml = '<?xml version="1.0" encoding="utf-8"?>
-                        <client><appId>'.$appId.'</appId>
-                        <clientType>'.$clientType.'</clientType>
-                        <charge>'.$charge.'</charge>
-                        <friendlyName>'.$friendlyName.'</friendlyName>
-                        <mobile>'.$mobile.'</mobile>
+                        <client><appId>' . $appId . '</appId>
+                        <clientType>' . $clientType . '</clientType>
+                        <charge>' . $charge . '</charge>
+                        <friendlyName>' . $friendlyName . '</friendlyName>
+                        <mobile>' . $mobile . '</mobile>
                         </client>';
             $body = trim($body_xml);
         } else {
@@ -218,17 +221,17 @@ class Ucpaas
     public function releaseClient($clientNumber, $appId, $type = 'json')
     {
         $url = self::BaseUrl . self::SoftVersion . '/Accounts/' . $this->accountSid . '/dropClient?sig=' . $this->getSigParameter();
-        if ($type == 'json') {
+        if ('json' == $type) {
             $body_json = [];
             $body_json['client'] = [];
             $body_json['client']['clientNumber'] = $clientNumber;
             $body_json['client']['appId'] = $appId;
             $body = json_encode($body_json);
-        } elseif ($type == 'xml') {
+        } elseif ('xml' == $type) {
             $body_xml = '<?xml version="1.0" encoding="utf-8"?>
                         <client>
-                        <clientNumber>'.$clientNumber.'</clientNumber>
-                        <appId>'.$appId.'</appId >
+                        <clientNumber>' . $clientNumber . '</clientNumber>
+                        <appId>' . $appId . '</appId >
                         </client>';
             $body = trim($body_xml);
         } else {
@@ -251,19 +254,19 @@ class Ucpaas
     public function getClientList($appId, $start, $limit, $type = 'json')
     {
         $url = self::BaseUrl . self::SoftVersion . '/Accounts/' . $this->accountSid . '/clientList?sig=' . $this->getSigParameter();
-        if ($type == 'json') {
+        if ('json' == $type) {
             $body_json = ['client' => [
                 'appId' => $appId,
                 'start' => $start,
                 'limit' => $limit,
             ]];
             $body = json_encode($body_json);
-        } elseif ($type == 'xml') {
+        } elseif ('xml' == $type) {
             $body_xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                         <client>
-                            <appId>'.$appId.'</appId>
-                            <start>'.$start.'</start>
-                            <limit>'.$limit.'</limit>
+                            <appId>' . $appId . '</appId>
+                            <start>' . $start . '</start>
+                            <limit>' . $limit . '</limit>
                         </client>';
             $body = trim($body_xml);
         } else {
@@ -284,14 +287,14 @@ class Ucpaas
      */
     public function getClientInfo($appId, $clientNumber, $type = 'json')
     {
-        if ($type == 'json') {
+        if ('json' == $type) {
             $type = 'json';
-        } elseif ($type == 'xml') {
+        } elseif ('xml' == $type) {
             $type = 'xml';
         } else {
             throw new Exception('只能json或xml，默认为json');
         }
-        $url = self::BaseUrl . self::SoftVersion . '/Accounts/' . $this->accountSid . '/Clients?sig=' . $this->getSigParameter(). '&clientNumber='.$clientNumber.'&appId='.$appId;
+        $url = self::BaseUrl . self::SoftVersion . '/Accounts/' . $this->accountSid . '/Clients?sig=' . $this->getSigParameter() . '&clientNumber=' . $clientNumber . '&appId=' . $appId;
         $data = $this->getResult($url, null, $type, 'get');
 
         return $data;
@@ -307,14 +310,14 @@ class Ucpaas
      */
     public function getClientInfoByMobile($appId, $mobile, $type = 'json')
     {
-        if ($type == 'json') {
+        if ('json' == $type) {
             $type = 'json';
-        } elseif ($type == 'xml') {
+        } elseif ('xml' == $type) {
             $type = 'xml';
         } else {
             throw new Exception('只能json或xml，默认为json');
         }
-        $url = self::BaseUrl . self::SoftVersion . '/Accounts/' . $this->accountSid . '/ClientsByMobile?sig=' . $this->getSigParameter(). '&mobile='.$mobile.'&appId='.$appId;
+        $url = self::BaseUrl . self::SoftVersion . '/Accounts/' . $this->accountSid . '/ClientsByMobile?sig=' . $this->getSigParameter() . '&mobile=' . $mobile . '&appId=' . $appId;
         $data = $this->getResult($url, null, $type, 'get');
 
         return $data;
@@ -331,17 +334,17 @@ class Ucpaas
     public function getBillList($appId, $date, $type = 'json')
     {
         $url = self::BaseUrl . self::SoftVersion . '/Accounts/' . $this->accountSid . '/billList?sig=' . $this->getSigParameter();
-        if ($type == 'json') {
+        if ('json' == $type) {
             $body_json = ['appBill' => [
                 'appId' => $appId,
                 'date' => $date,
             ]];
             $body = json_encode($body_json);
-        } elseif ($type == 'xml') {
+        } elseif ('xml' == $type) {
             $body_xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                         <appBill>
-                            <appId>'.$appId.'</appId>
-                            <date>'.$date.'</date>
+                            <appId>' . $appId . '</appId>
+                            <date>' . $date . '</date>
                         </appBill>';
             $body = trim($body_xml);
         } else {
@@ -365,7 +368,7 @@ class Ucpaas
     public function chargeClient($appId, $clientNumber, $chargeType, $charge, $type = 'json')
     {
         $url = self::BaseUrl . self::SoftVersion . '/Accounts/' . $this->accountSid . '/chargeClient?sig=' . $this->getSigParameter();
-        if ($type == 'json') {
+        if ('json' == $type) {
             $body_json = ['client' => [
                 'appId' => $appId,
                 'clientNumber' => $clientNumber,
@@ -373,13 +376,13 @@ class Ucpaas
                 'charge' => $charge,
             ]];
             $body = json_encode($body_json);
-        } elseif ($type == 'xml') {
+        } elseif ('xml' == $type) {
             $body_xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                         <client>
-                            <clientNumber>'.$clientNumber.'</clientNumber>
-                            <chargeType>'.$chargeType.'</chargeType>
-                            <charge>'.$charge.'</charge>
-                            <appId>'.$appId.'</appId>
+                            <clientNumber>' . $clientNumber . '</clientNumber>
+                            <chargeType>' . $chargeType . '</chargeType>
+                            <charge>' . $charge . '</charge>
+                            <appId>' . $appId . '</appId>
                         </client>';
             $body = trim($body_xml);
         } else {
@@ -404,7 +407,7 @@ class Ucpaas
     public function callBack($appId, $fromClient, $to, $fromSerNum = null, $toSerNum = null, $type = 'json')
     {
         $url = self::BaseUrl . self::SoftVersion . '/Accounts/' . $this->accountSid . '/Calls/callBack?sig=' . $this->getSigParameter();
-        if ($type == 'json') {
+        if ('json' == $type) {
             $body_json = ['callback' => [
                 'appId' => $appId,
                 'fromClient' => $fromClient,
@@ -413,14 +416,14 @@ class Ucpaas
                 'toSerNum' => $toSerNum,
             ]];
             $body = json_encode($body_json);
-        } elseif ($type == 'xml') {
+        } elseif ('xml' == $type) {
             $body_xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                         <callback>
-                            <fromClient>'.$fromClient.'</clientNumber>
-                            <fromSerNum>'.$fromSerNum.'</chargeType>
-                            <to>'.$to.'</charge>
-                            <toSerNum>'.$toSerNum.'</toSerNum>
-                            <appId>'.$appId.'</appId>
+                            <fromClient>' . $fromClient . '</clientNumber>
+                            <fromSerNum>' . $fromSerNum . '</chargeType>
+                            <to>' . $to . '</charge>
+                            <toSerNum>' . $toSerNum . '</toSerNum>
+                            <appId>' . $appId . '</appId>
                         </callback>';
             $body = trim($body_xml);
         } else {
@@ -443,19 +446,19 @@ class Ucpaas
     public function voiceCode($appId, $verifyCode, $to, $type = 'json')
     {
         $url = self::BaseUrl . self::SoftVersion . '/Accounts/' . $this->accountSid . '/Calls/voiceCode?sig=' . $this->getSigParameter();
-        if ($type == 'json') {
+        if ('json' == $type) {
             $body_json = ['voiceCode' => [
                 'appId' => $appId,
                 'verifyCode' => $verifyCode,
                 'to' => $to,
             ]];
             $body = json_encode($body_json);
-        } elseif ($type == 'xml') {
+        } elseif ('xml' == $type) {
             $body_xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                         <voiceCode>
-                            <verifyCode>'.$verifyCode.'</clientNumber>
-                            <to>'.$to.'</charge>
-                            <appId>'.$appId.'</appId>
+                            <verifyCode>' . $verifyCode . '</clientNumber>
+                            <to>' . $to . '</charge>
+                            <appId>' . $appId . '</appId>
                         </voiceCode>';
             $body = trim($body_xml);
         } else {
@@ -479,7 +482,7 @@ class Ucpaas
     public function templateSMS($appId, $to, $templateId, $param = null, $type = 'json')
     {
         $url = self::BaseUrl . self::SoftVersion . '/Accounts/' . $this->accountSid . '/Messages/templateSMS?sig=' . $this->getSigParameter();
-        if ($type == 'json') {
+        if ('json' == $type) {
             $body_json = ['templateSMS' => [
                 'appId' => $appId,
                 'templateId' => $templateId,
@@ -487,13 +490,13 @@ class Ucpaas
                 'param' => $param,
             ]];
             $body = json_encode($body_json);
-        } elseif ($type == 'xml') {
+        } elseif ('xml' == $type) {
             $body_xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                         <templateSMS>
-                            <templateId>'.$templateId.'</templateId>
-                            <to>'.$to.'</to>
-                            <param>'.$param.'</param>
-                            <appId>'.$appId.'</appId>
+                            <templateId>' . $templateId . '</templateId>
+                            <to>' . $to . '</to>
+                            <param>' . $param . '</param>
+                            <appId>' . $appId . '</appId>
                         </templateSMS>';
             $body = trim($body_xml);
         } else {
