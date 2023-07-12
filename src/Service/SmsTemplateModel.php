@@ -12,8 +12,8 @@ use Wei\Model\SoftDeleteTrait;
 class SmsTemplateModel extends BaseModel
 {
     use ModelTrait;
-    use SmsTemplateTrait;
     use ReqQueryTrait;
-    use SoftDeleteTrait;
+    use SmsTemplateTrait;
     use SnowflakeTrait;
+    use SoftDeleteTrait;
 }
