@@ -6,17 +6,6 @@ class LogSms
 {
 }
 
-class QcloudSms
-{
-    /**
-     * {@inheritdoc}
-     * @see QcloudSms::sendTplSms
-     */
-    public static function sendTplSms($mobiles, $tplId, array $data = [])
-    {
-    }
-}
-
 class Sms
 {
 }
@@ -1086,17 +1075,6 @@ namespace Miaoxing\Sms\Service;
 if (0) {
     class LogSms
     {
-    }
-
-    class QcloudSms
-    {
-        /**
-         * {@inheritdoc}
-         * @see QcloudSms::sendTplSms
-         */
-        public function sendTplSms($mobiles, $tplId, array $data = [])
-        {
-        }
     }
 
     class Sms

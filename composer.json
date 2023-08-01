@@ -14,10 +14,7 @@
   "autoload": {
     "psr-4": {
       "Miaoxing\\Sms\\": "src"
-    },
-    "classmap": [
-      "src/Lib"
-    ]
+    }
   },
   "autoload-dev": {
     "psr-4": {

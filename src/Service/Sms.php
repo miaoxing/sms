@@ -13,7 +13,7 @@ class Sms extends \Miaoxing\Plugin\BaseService
     /**
      * 短信提供商
      *
-     * 配置如['logSms', 'ucpaas']
+     * 配置如['logSms']
      *
      * @var array
      */
