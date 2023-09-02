@@ -3,6 +3,8 @@
 namespace MiaoxingTest\Sms\Service;
 
 use Miaoxing\Plugin\Test\BaseTestCase;
+use Miaoxing\Sms\Service\LogSms;
+use Wei\Logger;
 
 class SmsTest extends BaseTestCase
 {
@@ -20,14 +22,14 @@ class SmsTest extends BaseTestCase
             'content' => 'content',
         ]);
 
-        $this->assertRetErr($ret, '手机号码必须是11位长度的数字,以13,14,15,17或18开头', -1);
+        $this->assertRetErr(ret($ret), '手机号码必须是11位数字,以13到19开头', -1);
     }
 
     public function testSendEmptyDriver()
     {
         wei()->sms->setOption('drivers', []);
 
-        $mock = $this->getServiceMock('logger', ['alert']);
+        $mock = $this->getServiceMock(Logger::class, ['alert']);
         $mock->expects($this->once())
             ->method('alert')
             ->with('所有短信服务发送失败', ['errors' => []]);
@@ -37,7 +39,7 @@ class SmsTest extends BaseTestCase
             'content' => 'content',
         ]);
 
-        $this->assertRetErr($ret, '很抱歉,短信服务暂时不可以用,请稍后再试', -4);
+        $this->assertRetErr(ret($ret), '很抱歉,短信服务暂时不可以用,请稍后再试', -4);
     }
 
     public function testSendContentByLogSmsDriver()
@@ -49,14 +51,14 @@ class SmsTest extends BaseTestCase
             'content' => 'content',
         ]);
 
-        $this->assertRetSuc($ret);
+        $this->assertSame(1, $ret['code']);
     }
 
     public function testSendTplByLogSmsDriver()
     {
         wei()->sms->setOption('drivers', ['logSms']);
 
-        $mock = $this->getServiceMock('logSms', ['sendTplSms']);
+        $mock = $this->getServiceMock(LogSms::class, ['sendTplSms']);
         $mock->expects($this->once())
             ->method('sendTplSms')
             ->with('13800138000', 1, [0 => '123456'])
@@ -75,7 +77,7 @@ class SmsTest extends BaseTestCase
             ],
         ]);
 
-        $this->assertRetSuc($ret);
+        $this->assertSame(1, $ret['code']);
 
         unset(wei()->sms->logger);
     }
@@ -84,7 +86,7 @@ class SmsTest extends BaseTestCase
     {
         wei()->sms->setOption('drivers', ['logSms']);
 
-        $mock = $this->getServiceMock('logSms', ['sendContentSms']);
+        $mock = $this->getServiceMock(LogSms::class, ['sendContentSms']);
         $mock->expects($this->once())
             ->method('sendContentSms')
             ->with('13800138000', 'content')
@@ -93,7 +95,7 @@ class SmsTest extends BaseTestCase
                 'message' => '失败',
             ]);
 
-        $mock = $this->getServiceMock('logger', ['alert']);
+        $mock = $this->getServiceMock(Logger::class, ['alert']);
         $mock->expects($this->once())
             ->method('alert')
             ->with('所有短信服务发送失败', [
@@ -110,7 +112,7 @@ class SmsTest extends BaseTestCase
             'content' => 'content',
         ]);
 
-        $this->assertRetErr($ret, '很抱歉,短信服务暂时不可以用,请稍后再试', -4);
+        $this->assertRetErr(ret($ret), '很抱歉,短信服务暂时不可以用,请稍后再试', -4);
 
         unset(wei()->sms->logger);
     }
@@ -125,12 +127,12 @@ class SmsTest extends BaseTestCase
         $ret = wei()->sms->send([
             'mobile' => '13800138000',
         ]);
-        $this->assertRetSuc($ret);
+        $this->assertSame(1, $ret['code']);
 
         $ret = wei()->sms->send([
             'mobile' => '13800138000',
         ]);
-        $this->assertRetErr($ret, '很抱歉,您的操作太频繁了,请稍后再试', -2);
+        $this->assertRetErr(ret($ret), '很抱歉,您的操作太频繁了,请稍后再试', -2);
     }
 
     public function testIpTimeLimit()
@@ -145,11 +147,11 @@ class SmsTest extends BaseTestCase
         $ret = wei()->sms->send([
             'mobile' => '13800138000',
         ]);
-        $this->assertRetSuc($ret);
+        $this->assertSame(1, $ret['code']);
 
         $ret = wei()->sms->send([
             'mobile' => '13800138001',
         ]);
-        $this->assertRetErr($ret, '很抱歉,您的操作太频繁了,请稍后再试', -3);
+        $this->assertRetErr(ret($ret), '很抱歉,您的操作太频繁了,请稍后再试', -3);
     }
 }
