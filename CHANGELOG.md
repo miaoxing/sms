@@ -1,10 +1,22 @@
+## [0.1.41](https://github.com/miaoxing/sms/compare/v0.1.40...v0.1.41) (2023-09-02)
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/app:** upgrade from `0.7.5` to `0.7.6`
+* **@miaoxing/admin:** upgrade from `0.10.6` to `0.11.0`
+* **@miaoxing/dev:** upgrade from `8.2.2` to `8.2.3`
+
 ## [0.1.40](https://github.com/miaoxing/sms/compare/v0.1.39...v0.1.40) (2023-07-31)
 
 
 ### Features
 
-* **sms:** 增加短信模板管理 ([bc3c8ee](https://github.com/miaoxing/sms/commit/bc3c8eec03b0d465bd58229c90ea31b45990296c))
-* **sms:** 增加短信模板管理 ([de7f26d](https://github.com/miaoxing/sms/commit/de7f26dc27e80aae953a6a123a32cd40a6f44779))
+* **sms:** 增加短信模板管理 ([de4f4a7](https://github.com/miaoxing/sms/commit/de4f4a7a55e45291540888cb3bfeaa1d1368597f))
+* **sms:** 增加短信模板管理 ([356caa5](https://github.com/miaoxing/sms/commit/356caa524d8a3ea98b4972ab36cdf837af217da1))
 
 
 
