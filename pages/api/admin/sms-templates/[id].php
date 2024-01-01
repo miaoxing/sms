@@ -12,7 +12,7 @@ return new class () extends BaseController {
     public function patch()
     {
         return UpdateAction::new()
-            ->validate(function (SmsTemplateModel $template, $req) {
+            ->validate(static function (SmsTemplateModel $template, $req) {
                 $v = V::defaultOptional()->defaultNotEmpty();
                 $v->setModel($template);
                 $v->modelColumn('name', '名称')->requiredIfNew();
