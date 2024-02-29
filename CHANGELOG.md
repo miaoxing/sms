@@ -1,3 +1,14 @@
+## [0.1.49](https://github.com/miaoxing/sms/compare/v0.1.48...v0.1.49) (2024-02-29)
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/app:** upgrade from `0.8.1` to `0.8.2`
+* **@miaoxing/admin:** upgrade from `0.12.1` to `0.12.2`
+
 ## [0.1.48](https://github.com/miaoxing/sms/compare/v0.1.47...v0.1.48) (2024-02-20)
 
 
