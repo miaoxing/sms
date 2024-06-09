@@ -1,12 +1,12 @@
 <?php
 
-use Miaoxing\Plugin\BaseController;
+use Miaoxing\Plugin\BasePage;
 use Miaoxing\Services\Page\ItemTrait;
 use Miaoxing\Services\Service\UpdateAction;
 use Miaoxing\Sms\Service\SmsTemplateModel;
 use Wei\V;
 
-return new class () extends BaseController {
+return new class () extends BasePage {
     use ItemTrait;
 
     public function patch()
