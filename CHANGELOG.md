@@ -1,3 +1,19 @@
+## [0.1.53](https://github.com/miaoxing/sms/compare/v0.1.52...v0.1.53) (2024-06-30)
+
+
+### Bug Fixes
+
+* **sms:** 短信模板页面基类改为 `BasePage` ([1583cab](https://github.com/miaoxing/sms/commit/1583cabcecca083e601cafedeea20756b8bc7d37))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/app:** upgrade from `0.10.0` to `0.10.1`
+* **@miaoxing/admin:** upgrade from `0.13.1` to `0.13.2`
+
 ## [0.1.52](https://github.com/miaoxing/sms/compare/v0.1.51...v0.1.52) (2024-05-30)
 
 
