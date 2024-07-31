@@ -1,3 +1,20 @@
+## [0.1.54](https://github.com/miaoxing/sms/compare/v0.1.53...v0.1.54) (2024-07-31)
+
+
+### Features
+
+* **u:** 调整页面内容为卡片视图 ([ba0ef88](https://github.com/miaoxing/sms/commit/ba0ef8814cee9773e26feed1b78609d6b49f57cf))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/app:** upgrade from `0.10.1` to `0.10.2`
+* **@miaoxing/admin:** upgrade from `0.13.2` to `0.14.0`
+* **@miaoxing/dev:** upgrade from `9.1.1` to `9.1.2`
+
 ## [0.1.53](https://github.com/miaoxing/sms/compare/v0.1.52...v0.1.53) (2024-06-30)
 
 
