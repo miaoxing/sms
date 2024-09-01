@@ -1,3 +1,20 @@
+## [0.1.57](https://github.com/miaoxing/sms/compare/v0.1.56...v0.1.57) (2024-09-01)
+
+
+### Features
+
+* 插件增加 wei 命令行入口 ([05ea3ee](https://github.com/miaoxing/sms/commit/05ea3ee590cb4b55635c86089a19ebe0b0d0f28e))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/app:** upgrade from `0.10.3` to `0.10.4`
+* **@miaoxing/admin:** upgrade from `0.15.1` to `0.15.2`
+* **@miaoxing/dev:** upgrade from `9.1.3` to `9.2.0`
+
 ## [0.1.56](https://github.com/miaoxing/sms/compare/v0.1.55...v0.1.56) (2024-08-03)
 
 
