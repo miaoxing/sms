@@ -1,3 +1,13 @@
+## [0.1.60](https://github.com/miaoxing/sms/compare/v0.1.59...v0.1.60) (2024-11-03)
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/admin:** upgrade from `0.16.1` to `0.16.2`
+
 ## [0.1.59](https://github.com/miaoxing/sms/compare/v0.1.58...v0.1.59) (2024-11-01)
 
 
